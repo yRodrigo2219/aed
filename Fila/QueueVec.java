@@ -14,6 +14,7 @@ public class QueueVec<T> implements IQueue<T>{
         if(isEmpty()){
             this.arr[0] = newData;
             this.size++;
+            this.tail = 0;
         }else{
             if(this.tail+1 == this.length){
                 System.out.println("Array cheio");
@@ -46,6 +47,7 @@ public class QueueVec<T> implements IQueue<T>{
         
         this.arr = tempArr;
         this.size--;
+        this.tail--;
 
         return tempElem;
     }
