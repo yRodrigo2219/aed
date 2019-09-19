@@ -3,26 +3,26 @@ public class ListaEncadeada{
         private int data;
         private Element next;
 
-    public Element(int data, Element next){
-        this.data = data;
-        this.next = next;
-    }
+        public Element(int data, Element next){
+            this.data = data;
+            this.next = next;
+        }
 
-    public int getData() {
-        return data;
-    }
+        public int getData() {
+            return data;
+        }
 
-    public void setData(int data) {
-        this.data = data;
-    }
+        public void setData(int data) {
+            this.data = data;
+        }
 
-    public Element getNext() {
-        return next;
-    }
+        public Element getNext() {
+            return next;
+        }
 
-    public void setNext(Element next) {
-        this.next = next;
-    }
+        public void setNext(Element next) {
+            this.next = next;
+        }
     }
 
     private Element head;

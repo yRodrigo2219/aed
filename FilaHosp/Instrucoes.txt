@@ -1,0 +1,8 @@
+
+    Os pacientes devem ser adicionado de antemao,
+a ordem é: id, tempo de chegada, prioridade.
+
+    Os pacientes devem estar em ordem de chegada,
+um paciente que chegou no tempo 4 não deve ser 
+declarado antes de um paciente que chegou no 
+tempo 3, por exemplo!
