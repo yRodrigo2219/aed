@@ -1,44 +1,43 @@
-public class ListaEncadeada{
-    private final class Element{
-        private int data;
-        private Element next;
+public class ListaEncadeada<T>{
+    private final class Element<T>{
+        private T data;
+        private Element<T> next;
 
-        public Element(int data, Element next){
+        public Element(T data, Element<T> next){
             this.data = data;
             this.next = next;
         }
 
-        public int getData() {
+        public T getData() {
             return data;
         }
 
-        public void setData(int data) {
+        public void setData(T data) {
             this.data = data;
         }
 
-        public Element getNext() {
+        public Element<T> getNext() {
             return next;
         }
 
-        public void setNext(Element next) {
+        public void setNext(Element<T> next) {
             this.next = next;
         }
     }
 
-    private Element head;
-    private Element tail;
+    private Element<T> head;
+    private Element<T> tail;
 
-    public ListaEncadeada(){
-        this.head = null;
-        this.tail = null;
-    }
-
-    public Element getHead(){
+    public Element<T> getHead(){
         return this.head;
     }
 
-    public Element getTail(){
+    public Element<T> getTail(){
         return this.tail;
+    }
+    
+    public boolean estaVazia(){
+        return (this.head == null);
     }
 
     public void fazVazia(){
@@ -46,8 +45,8 @@ public class ListaEncadeada{
         this.tail = null;
     }
 
-    public void inserirInicio(int data){
-        Element novo = new Element(data, this.head);
+    public void inserirInicio(T data){
+        Element<T> novo = new Element<>(data, this.head);
 
         if(this.head == null){
             this.tail = novo;
@@ -56,8 +55,8 @@ public class ListaEncadeada{
         this.head = novo;
     }
 
-    public void inserirFinal(int data){
-        Element novo = new Element(data, null);
+    public void inserirFinal(T data){
+        Element<T> novo = new Element<>(data, null);
 
         if(this.tail == null){
             this.head = novo;
@@ -68,18 +67,22 @@ public class ListaEncadeada{
         this.tail = novo;
     }
 
-    public void atribuir(ListaEncadeada lista2){
+    public void removerInicio(){
+        this.head = this.head.getNext();
+    }
+
+    public void atribuir(ListaEncadeada<T> lista2){
         if(this != lista2){
             this.fazVazia();
-            for(Element ptr = lista2.getHead(); ptr != null; ptr = ptr.getNext()){
+            for(Element<T> ptr = lista2.getHead(); ptr != null; ptr = ptr.getNext()){
                 inserirFinal(ptr.getData());
             }
         }
     }
 
-    public void extrair(int i){
-        Element ptr = this.head;
-        Element prevPtr = null;
+    public void extrair(T i){
+        Element<T> ptr = this.head;
+        Element<T> prevPtr = null;
 
         while(ptr != null && ptr.getData() != i){
             prevPtr = ptr;
@@ -101,8 +104,8 @@ public class ListaEncadeada{
         }
     }
 
-    public Element retornaElemento(int conteudo){
-        Element ptr = this.head;
+    public Element<T> retornaElemento(T conteudo){
+        Element<T> ptr = this.head;
 
         while (ptr != null && ptr.getData() != conteudo){
             ptr = ptr.getNext();
@@ -111,10 +114,10 @@ public class ListaEncadeada{
         return ptr;
     }
 
-    public void inserirAntes(int oQue, int deQuem){
-        Element ptr = retornaElemento(deQuem);
-        Element novo = new Element(oQue, ptr);
-        Element prevPtr = this.head;
+    public void inserirAntes(T oQue, T deQuem){
+        Element<T> ptr = retornaElemento(deQuem);
+        Element<T> novo = new Element<>(oQue, ptr);
+        Element<T> prevPtr = this.head;
 
         if (ptr == this.head){
             this.head = novo;
@@ -125,9 +128,9 @@ public class ListaEncadeada{
         prevPtr.setNext(novo);
     }
 
-    public void inserirDepois(int oQue, int deQuem){
-        Element ptr = retornaElemento(deQuem);
-        Element novo = new Element(oQue, ptr.getNext());
+    public void inserirDepois(T oQue, T deQuem){
+        Element<T> ptr = retornaElemento(deQuem);
+        Element<T> novo = new Element<>(oQue, ptr.getNext());
 
         ptr.setNext(novo);
 
@@ -139,7 +142,7 @@ public class ListaEncadeada{
     @Override
     public String toString(){
         String str = "[ ";
-        for(Element ptr = this.head; ptr != null; ptr = ptr.getNext()){
+        for(Element<T> ptr = this.head; ptr != null; ptr = ptr.getNext()){
             str += ptr.getData() + (ptr.getNext() != null ? ", " : "");
         }
         str += " ]";

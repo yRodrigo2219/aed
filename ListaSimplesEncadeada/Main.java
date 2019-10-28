@@ -1,7 +1,7 @@
 public class Main{
     public static void main(String[] args) {
-        ListaEncadeada lista1 = new ListaEncadeada();
-        ListaEncadeada lista2 = new ListaEncadeada();
+        ListaEncadeada<Integer> lista1 = new ListaEncadeada<>();
+        ListaEncadeada<Integer> lista2 = new ListaEncadeada<>();
 
         for(int i = 0; i <= 20; i++){
             lista1.inserirFinal(20-i);

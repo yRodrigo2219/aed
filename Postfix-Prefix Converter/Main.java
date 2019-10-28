@@ -3,7 +3,7 @@ public class Main{
         System.out.println("Postfix:\n");
 
         Postfix postfix = new Postfix();
-        System.out.println(postfix.infixToPostfix("a+b*c/d"));
+        System.out.println(postfix.infixToPostfix("((a/b)+((c–d)*e))"));
         System.out.println(postfix.postfixToInfix("abc*d/+"));
         System.out.println(postfix.calcPostfix("123*4/+"));
         System.out.println(postfix.postfixToPrefix("abc*d/+"));

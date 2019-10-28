@@ -13,7 +13,8 @@ public class Postfix extends Expression{
                     while(!stack.isEmpty() && stack.getTop() != '(')
                         result += stack.pop();
 
-                    stack.pop();
+                    if(!stack.isEmpty())
+                        stack.pop();
                 }else{
                     while(!stack.isEmpty() && operatorPrecedance(expression.charAt(i)) <= operatorPrecedance(stack.getTop()==null?' ':stack.getTop()))
                         result += stack.pop();
